@@ -19,9 +19,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-zI-elw">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="dNb-IT-kJ0">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="NnI-dN-Tmx" detailTextLabel="NjG-Yb-nZC" style="IBUITableViewCellStyleSubtitle" id="l1n-34-bIy">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="72" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l1n-34-bIy" id="vN9-eb-jDE">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
@@ -57,14 +62,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jIo-Ca-I73">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="s4A-vK-oYM">
-                            <textField key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="rjv-iV-jkY">
-                                <rect key="frame" x="20" y="5" width="92" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ln0-dl-qpD">
                             <connections>
                                 <segue destination="ECa-Ak-ejX" kind="show" id="dlO-Xp-CUD"/>
@@ -72,7 +69,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="catText" destination="s4A-vK-oYM" id="UXy-Rc-N1n"/>
+                        <outlet property="searchField" destination="dNb-IT-kJ0" id="wDy-ky-Oub"/>
                         <outlet property="tableView" destination="dcn-zI-elw" id="ajT-2Y-TDo"/>
                         <segue destination="ECa-Ak-ejX" kind="show" identifier="cellSegue" id="kYo-Gm-SPX"/>
                     </connections>
@@ -120,7 +117,7 @@
                                     <constraint firstAttribute="height" constant="120" id="78c-OQ-fyA"/>
                                 </constraints>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo9-us-axJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="カテゴリ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo9-us-axJ">
                                 <rect key="frame" x="10" y="98" width="394" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -170,6 +167,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="xkR-u4-DGy"/>
                     <connections>
+                        <outlet property="Category" destination="oXe-qq-yYC" id="44W-2Z-tOP"/>
                         <outlet property="contentsTextView" destination="cJL-3b-MT5" id="mJS-Mb-IVP"/>
                         <outlet property="datePicker" destination="HXi-bN-6he" id="ixg-i8-4zA"/>
                         <outlet property="titleTextField" destination="b4j-5C-3cc" id="Kbj-nF-nHU"/>

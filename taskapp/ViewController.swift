@@ -9,12 +9,14 @@ import UIKit
 import RealmSwift
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var catText: UIBarButtonItem!
+    @IBOutlet weak var searchField: UISearchBar!
     
     // Realmインスタンスを取得する
     let realm = try! Realm()  // ←追加
+
     // DB内のタスクが格納されるリスト。
     // 日付の近い順でソート：昇順
     // 以降内容をアップデートするとリスト内は自動的に更新される。
@@ -26,6 +28,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+        searchField.delegate = self
+
+        
     }
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -112,6 +117,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchText : String? = searchField.text
+        _ = try! Realm().objects(Task.self).filter("category = %@",searchText!).sorted(byKeyPath: "date", ascending: true)
+        //tableView.reloadData()
+        print(searchText!)
     }
 }
 
