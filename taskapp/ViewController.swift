@@ -119,11 +119,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    @objc func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let searchText : String? = searchField.text
-        _ = try! Realm().objects(Task.self).filter("category = %@",searchText!).sorted(byKeyPath: "date", ascending: true)
-        //tableView.reloadData()
-        print(searchText!)
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: true)
+            tableView.reloadData()
+            print(searchBar.text!)
+        } else {
+        taskArray = try! Realm().objects(Task.self).filter("category = %@",searchBar.text!).sorted(byKeyPath: "date", ascending: true)
+        tableView.reloadData()
+        print(searchBar.text!)
+        }
+        
     }
+    
 }
 
